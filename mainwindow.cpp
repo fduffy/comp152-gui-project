@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QString>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -119,4 +120,16 @@ void MainWindow::printVals()
 void MainWindow::on_testButton_clicked()
 {
     printVals();
+}
+
+void MainWindow::on_targetBrowse_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, "Open File", QDir::homePath(), "*.txt");
+    ui->targetFileLine->setText(fileName);
+}
+
+void MainWindow::on_destinationBrowse_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, "Open File", QDir::homePath(), "*.txt");
+    ui->destFileLine->setText(fileName);
 }

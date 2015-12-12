@@ -56,7 +56,7 @@
      <string>print values</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -82,22 +82,12 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>100</y>
-      <width>201</width>
-      <height>101</height>
+      <y>160</y>
+      <width>218</width>
+      <height>46</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Target File</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="targetFileLine"/>
-     </item>
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
@@ -106,10 +96,63 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="destFileLine"/>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLineEdit" name="destFileLine"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="destinationBrowse">
+         <property name="text">
+          <string>Browse...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>218</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Target File</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLineEdit" name="targetFileLine"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="targetBrowse">
+         <property name="text">
+          <string>Browse...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <zorder>encryptButton</zorder>
+   <zorder>decryptButton</zorder>
+   <zorder>testButton</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>targetBrowse</zorder>
+   <zorder>destinationBrowse</zorder>
+   <zorder>targetBrowse</zorder>
+   <zorder></zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

@@ -13,11 +13,8 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    filebrowser.cpp
+        mainwindow.cpp
 
-HEADERS  += mainwindow.h \
-    filebrowser.h
+HEADERS  += mainwindow.h
 
-FORMS    += mainwindow.ui \
-    filebrowser.ui
+FORMS    += mainwindow.ui

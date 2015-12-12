@@ -28,6 +28,10 @@ private slots:
 
     void on_testButton_clicked();
 
+    void on_targetBrowse_clicked();
+
+    void on_destinationBrowse_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString targetFile;
