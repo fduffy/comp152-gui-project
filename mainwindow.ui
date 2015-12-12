@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>241</width>
+    <width>292</width>
     <height>261</height>
    </rect>
   </property>
@@ -17,112 +17,149 @@
    <string>Caesar Cipher</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="">
+   <widget class="QToolButton" name="encryptButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Encrypt</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="decryptButton">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>0</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Decrypt</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="testButton">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>0</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>print values</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>220</width>
-      <height>147</height>
+      <width>201</width>
+      <height>41</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_4">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Key</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="keyLine"/>
-       </item>
-      </layout>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Key</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Target File</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QLineEdit" name="targetFileLine"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="targetBrowse">
-           <property name="text">
-            <string>Browse...</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
+      <widget class="QLineEdit" name="keyLine"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>160</y>
+      <width>218</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Destination</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Destination</string>
-         </property>
-        </widget>
+        <widget class="QLineEdit" name="destFileLine"/>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QLineEdit" name="destFileLine"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="destinationBrowse">
-           <property name="text">
-            <string>Browse...</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <widget class="QPushButton" name="destinationBrowse">
+         <property name="text">
+          <string>Browse...</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
     </layout>
    </widget>
-   <widget class="QSplitter" name="splitter">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
-      <width>221</width>
-      <height>31</height>
+      <y>100</y>
+      <width>218</width>
+      <height>46</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-    <widget class="QToolButton" name="encryptButton">
-     <property name="text">
-      <string>Encrypt</string>
-     </property>
-    </widget>
-    <widget class="QToolButton" name="decryptButton">
-     <property name="text">
-      <string>Decrypt</string>
-     </property>
-    </widget>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Target File</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLineEdit" name="targetFileLine"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="targetBrowse">
+         <property name="text">
+          <string>Browse...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
+   <zorder>encryptButton</zorder>
+   <zorder>decryptButton</zorder>
+   <zorder>testButton</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>targetBrowse</zorder>
+   <zorder>destinationBrowse</zorder>
+   <zorder>targetBrowse</zorder>
+   <zorder></zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>241</width>
+     <width>292</width>
      <height>21</height>
     </rect>
    </property>
