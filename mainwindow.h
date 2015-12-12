@@ -18,15 +18,11 @@ public:
     void setTargetFile();
     void setDestFile();
     void setKey();
-    void printVals();
-
 
 private slots:
     void on_encryptButton_clicked();
 
     void on_decryptButton_clicked();
-
-    void on_testButton_clicked();
 
     void on_targetBrowse_clicked();
 
