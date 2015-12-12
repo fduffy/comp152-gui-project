@@ -47,8 +47,8 @@
     <property name="geometry">
      <rect>
       <x>11</x>
-      <y>63</y>
-      <width>220</width>
+      <y>71</y>
+      <width>222</width>
       <height>147</height>
      </rect>
     </property>
@@ -70,6 +70,31 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Target File</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLineEdit" name="targetFileLine"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="targetBrowse">
+             <property name="text">
+              <string>Browse...</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>Destination</string>
@@ -83,31 +108,6 @@
          </item>
          <item>
           <widget class="QPushButton" name="destinationBrowse">
-           <property name="text">
-            <string>Browse...</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Target File</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QLineEdit" name="targetFileLine"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="targetBrowse">
            <property name="text">
             <string>Browse...</string>
            </property>
