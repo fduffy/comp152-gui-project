@@ -51,8 +51,7 @@ void MainWindow::encrypt(int key, QString targetFile, QString destFile)
     qDebug() << targetFile << destFile << text.size() << text;
 
     int i=0;
-    int size = text.size();
-    while(i < size)
+    while(i < text.size())
     {
         qDebug() << "after while loop ";
         char val = text.at(i).toLatin1();
@@ -91,6 +90,8 @@ void MainWindow::decrypt(int key, QString targetFile, QString destFile)
             }
             out << val;
     }
+    inputFile.close();
+    outputFile.close();
 }
 
 void MainWindow::setTargetFile()
