@@ -42,8 +42,6 @@ void MainWindow::encrypt(int key, QString targetFile, QString destFile)
     inputFile.open(QIODevice::ReadWrite);
     outputFile.open(QIODevice::ReadWrite);
 
-    qDebug() << targetFile << destFile;
-
     QTextStream in(&inputFile);
     QString text = in.readAll();
     QTextStream out(&outputFile);
