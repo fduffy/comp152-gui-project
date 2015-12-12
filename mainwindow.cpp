@@ -46,15 +46,11 @@ void MainWindow::encrypt(int key, QString targetFile, QString destFile)
 
     QTextStream in(&inputFile);
     QString text = in.readAll();
-
     QTextStream out(&outputFile);
-
-    qDebug() << targetFile << destFile << text.size() << text;
 
     int i=0;
     while(i < text.size())
     {
-        qDebug() << "after while loop ";
         char val = text.at(i).toLatin1();
 
         if (val >= 65 && val <= 122)
@@ -64,8 +60,6 @@ void MainWindow::encrypt(int key, QString targetFile, QString destFile)
             out << val;
             i++;
     }
-
-    qDebug() << "function executed ";
     inputFile.close();
     outputFile.close();
 }
@@ -108,18 +102,6 @@ void MainWindow::setDestFile()
 void MainWindow::setKey()
 {
     key = ui->keyLine->text().toInt();
-}
-
-void MainWindow::printVals()
-{
-    qDebug() << key;
-    qDebug() << targetFile;
-    qDebug() << destFile;
-}
-
-void MainWindow::on_testButton_clicked()
-{
-    printVals();
 }
 
 void MainWindow::on_targetBrowse_clicked()
