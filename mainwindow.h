@@ -18,6 +18,8 @@ public:
     void setTargetFile();
     void setDestFile();
     void setKey();
+    int keyCheck(QString key);
+    int fileCheck(QString file);
 
 private slots:
     void on_encryptButton_clicked();

@@ -41,37 +41,15 @@ void MainWindow::on_decryptButton_clicked()
 int MainWindow::encrypt(QString key, QString targetFile, QString destFile)
 {
 //key check
-    int keyint = key.toInt();
-    if(keyint == 0)
-    {
-        QMessageBox *errorBox = new QMessageBox();
-        errorBox->critical(0,"Error","Not valid key!\nMust be integer!");
-        errorBox->setFixedSize(500,200);
-        delete errorBox;
-        return 1;
-    }
+    int keyint = keyCheck(key);
 //input file check
-    QFileInfo inputFileCheck(targetFile);
-    if(!inputFileCheck.isFile())
-    {
-        QMessageBox *errorBox = new QMessageBox();
-        errorBox->critical(0,"Error","File does not exist!");
-        errorBox->setFixedSize(500,200);
-        delete errorBox;
-        return 1;
-    }
+    fileCheck(targetFile);
     QFile inputFile(targetFile);
-//output file check
 
-    QFileInfo outputFileCheck(destFile);
-    if(!outputFileCheck.isFile())
-    {
-        QMessageBox *errorBox = new QMessageBox();
-        errorBox->critical(0,"Error","File does not exist!");
-        errorBox->setFixedSize(500,200);
-        delete errorBox;
-        return 1;
-    }
+    qDebug() << targetFile;
+
+//output file check
+    fileCheck(destFile);
     QFile outputFile;
     outputFile.setFileName(destFile);
 
@@ -100,50 +78,17 @@ int MainWindow::encrypt(QString key, QString targetFile, QString destFile)
 }
 int MainWindow::decrypt(QString key, QString targetFile, QString destFile)
 {
-    int keyint = key.toInt();
-    if(keyint == 0)
-    {
-        QMessageBox *errorBox = new QMessageBox();
-        errorBox->critical(0,"Error","Not valid key!\nMust be integer!");
-        errorBox->setFixedSize(500,200);
-        delete errorBox;
-        return 1;
-    }
+//key check
+    int keyint = keyCheck(key);
 //input file check
-    QFileInfo inputFileCheck(targetFile);
-    if(!inputFileCheck.isFile())
-    {
-        QMessageBox *errorBox = new QMessageBox();
-        errorBox->critical(0,"Error","File does not exist!");
-        errorBox->setFixedSize(500,200);
-        delete errorBox;
-        return 1;
-    }
+    fileCheck(targetFile);
     QFile inputFile(targetFile);
 //output file check
-
-    QFileInfo outputFileCheck(destFile);
-    if(!outputFileCheck.isFile())
-    {
-        QMessageBox *errorBox = new QMessageBox();
-        errorBox->critical(0,"Error","File does not exist!");
-        errorBox->setFixedSize(500,200);
-        delete errorBox;
-        return 1;
-    }
+    fileCheck(destFile);
     QFile outputFile;
     outputFile.setFileName(destFile);
 
     qDebug() << destFile;
-
-    if(!inputFile.exists())
-    {
-        QMessageBox *errorBox = new QMessageBox();
-        errorBox->critical(0,"Error","File does not exist!");
-        errorBox->setFixedSize(500,200);
-        delete errorBox;
-        return 1;
-    }
 
     inputFile.open(QIODevice::ReadWrite);
     outputFile.open(QIODevice::ReadWrite);
@@ -168,6 +113,39 @@ int MainWindow::decrypt(QString key, QString targetFile, QString destFile)
     outputFile.close();
     return 0;
 }
+int MainWindow::keyCheck(QString key)
+{
+    int keyint = key.toInt();
+    if(keyint == 0)
+    {
+        QMessageBox *errorBox = new QMessageBox();
+        errorBox->critical(0,"Error","Not valid key!\nMust be integer greater than 0!");
+        errorBox->setFixedSize(500,200);
+        delete errorBox;
+        return 1;
+    }
+    else
+    {
+        return keyint;
+    }
+}
+
+int MainWindow::fileCheck(QString file)
+{
+    QFileInfo fileCheck(file);
+    qDebug() <<file;
+    if(!fileCheck.isFile() && !fileCheck.exists())
+    {
+        QMessageBox *errorBox = new QMessageBox();
+        errorBox->critical(0,"Error","File does not exist!");
+        errorBox->setFixedSize(500,200);
+        delete errorBox;
+        return 1;
+    }
+    else
+        return 0;
+}
+
 
 void MainWindow::setTargetFile()
 {
