@@ -5,6 +5,9 @@
 #include <QTextStream>
 #include <QString>
 #include <QFileDialog>
+#include <QMessageBox>
+#include <QChar>
+#include <QFileInfo>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -35,10 +38,43 @@ void MainWindow::on_decryptButton_clicked()
 }
 
 
-void MainWindow::encrypt(int key, QString targetFile, QString destFile)
+int MainWindow::encrypt(QString key, QString targetFile, QString destFile)
 {
+//key check
+    int keyint = key.toInt();
+    if(keyint == 0)
+    {
+        QMessageBox *errorBox = new QMessageBox();
+        errorBox->critical(0,"Error","Not valid key!\nMust be integer!");
+        errorBox->setFixedSize(500,200);
+        delete errorBox;
+        return 1;
+    }
+//input file check
+    QFileInfo inputFileCheck(targetFile);
+    if(!inputFileCheck.isFile())
+    {
+        QMessageBox *errorBox = new QMessageBox();
+        errorBox->critical(0,"Error","File does not exist!");
+        errorBox->setFixedSize(500,200);
+        delete errorBox;
+        return 1;
+    }
     QFile inputFile(targetFile);
-    QFile outputFile(destFile);
+//output file check
+
+    QFileInfo outputFileCheck(destFile);
+    if(!outputFileCheck.isFile())
+    {
+        QMessageBox *errorBox = new QMessageBox();
+        errorBox->critical(0,"Error","File does not exist!");
+        errorBox->setFixedSize(500,200);
+        delete errorBox;
+        return 1;
+    }
+    QFile outputFile;
+    outputFile.setFileName(destFile);
+
     inputFile.open(QIODevice::ReadWrite);
     outputFile.open(QIODevice::ReadWrite);
 
@@ -53,17 +89,62 @@ void MainWindow::encrypt(int key, QString targetFile, QString destFile)
 
         if (val >= 65 && val <= 122)
             {
-                val = ((val + key) - 65) % 58 + 65;
+                val = ((val + keyint) - 65) % 58 + 65;
             }
             out << val;
             i++;
     }
     inputFile.close();
     outputFile.close();
+    return 0;
 }
-void MainWindow::decrypt(int key, QString targetFile, QString destFile)
+int MainWindow::decrypt(QString key, QString targetFile, QString destFile)
 {
-    QFile inputFile(targetFile), outputFile(destFile);
+    int keyint = key.toInt();
+    if(keyint == 0)
+    {
+        QMessageBox *errorBox = new QMessageBox();
+        errorBox->critical(0,"Error","Not valid key!\nMust be integer!");
+        errorBox->setFixedSize(500,200);
+        delete errorBox;
+        return 1;
+    }
+//input file check
+    QFileInfo inputFileCheck(targetFile);
+    if(!inputFileCheck.isFile())
+    {
+        QMessageBox *errorBox = new QMessageBox();
+        errorBox->critical(0,"Error","File does not exist!");
+        errorBox->setFixedSize(500,200);
+        delete errorBox;
+        return 1;
+    }
+    QFile inputFile(targetFile);
+//output file check
+
+    QFileInfo outputFileCheck(destFile);
+    if(!outputFileCheck.isFile())
+    {
+        QMessageBox *errorBox = new QMessageBox();
+        errorBox->critical(0,"Error","File does not exist!");
+        errorBox->setFixedSize(500,200);
+        delete errorBox;
+        return 1;
+    }
+    QFile outputFile;
+    outputFile.setFileName(destFile);
+
+    qDebug() << destFile;
+
+    if(!inputFile.exists())
+    {
+        QMessageBox *errorBox = new QMessageBox();
+        errorBox->critical(0,"Error","File does not exist!");
+        errorBox->setFixedSize(500,200);
+        delete errorBox;
+        return 1;
+    }
+
     inputFile.open(QIODevice::ReadWrite);
     outputFile.open(QIODevice::ReadWrite);
 
@@ -79,12 +160,13 @@ void MainWindow::decrypt(int key, QString targetFile, QString destFile)
 
         if (val >= 65 && val <= 122)
             {
-                val = (val - key - 65 + 58) % 58 + 65;
+                val = (val - keyint - 65 + 58) % 58 + 65;
             }
             out << val;
     }
     inputFile.close();
     outputFile.close();
+    return 0;
 }
 
 void MainWindow::setTargetFile()
@@ -99,7 +181,7 @@ void MainWindow::setDestFile()
 
 void MainWindow::setKey()
 {
-    key = ui->keyLine->text().toInt();
+    key = ui->keyLine->text();
 }
 
 void MainWindow::on_targetBrowse_clicked()
@@ -110,6 +192,6 @@ void MainWindow::on_targetBrowse_clicked()
 
 void MainWindow::on_destinationBrowse_clicked()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, "Open File", QDir::homePath(), "*.txt");
+    QString fileName = QFileDialog::getSaveFileName(this, "Open File", QDir::homePath(), "*.txt");
     ui->destFileLine->setText(fileName);
 }

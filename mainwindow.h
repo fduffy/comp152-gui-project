@@ -30,12 +30,12 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QString targetFile;
-    QString destFile;
-    int key;
+    QString targetFile = "";
+    QString destFile = "";
+    QString key = "0";
 
-    void encrypt(int key, QString targetFile, QString destFile);
-    void decrypt(int key, QString targetFile, QString destFile);
+    int encrypt(QString key, QString targetFile, QString destFile);
+    int decrypt(QString key, QString targetFile, QString destFile);
 
 };
 
